@@ -211,7 +211,7 @@ class DefaultStrategy(AbstractStrategy):
     @staticmethod
     def _get_closest_anchor(anchors):
         # Getting the element anchor as the closest one
-        for index in reversed(range(7)):
+        for index in reversed(list(range(7))):
             potential_anchor = anchors['lvl' + str(index)]
             if potential_anchor is None:
                 continue
