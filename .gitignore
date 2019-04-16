@@ -17,3 +17,5 @@ geckodriver.log
 
 configs/public
 configs/private
+
+Pipfile.lock

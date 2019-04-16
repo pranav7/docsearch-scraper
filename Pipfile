@@ -17,6 +17,3 @@ tldextract = "==2.1.0"
 pytest = "==3.10.0"
 
 [dev-packages]
-
-[requires]
-python_version = "2.7"
