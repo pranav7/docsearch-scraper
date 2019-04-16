@@ -15,9 +15,9 @@ def get_endpoint(endpoint, params=''):
 def get_headers():
     token = environ.get('INTERNAL_API_AUTH')
 
-    app_id = environ.get('APPLICATION_ID_PROD')
-    admin_api_key = environ.get('API_KEY_PROD')
-    auth_token = b64encode(app_id + ":" + admin_api_key).replace('=',
+    app_id = environ.get('APPLICATION_ID_PROD').encode()
+    admin_api_key = environ.get('API_KEY_PROD').encode()
+    auth_token = b64encode(app_id + b":" + admin_api_key).decode().replace('=',
                                                                  '').replace(
         "\n", '')
 
