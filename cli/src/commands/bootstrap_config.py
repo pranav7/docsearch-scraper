@@ -1,5 +1,9 @@
 from .abstract_command import AbstractCommand
-from collections import OrderedDict
+
+try:
+    from collections.abc import OrderedDict  # Python 3
+except ImportError:
+    from collections import OrderedDict  # Python 2.7
 
 
 class BootstrapConfig(AbstractCommand):

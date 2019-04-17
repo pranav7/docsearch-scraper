@@ -1,12 +1,17 @@
-from collections import OrderedDict
 import tldextract
 import re
 from . import helpers
 from . import helpdesk_helper
+
 try:
     from urllib.parse import urlparse
 except ImportError:
     from urlparse import urlparse
+
+try:
+    from collections.abc import OrderedDict  # Python 3
+except ImportError:
+    from collections import OrderedDict  # Python 2.7
 
 
 def extract_root_from_input(input_string):
