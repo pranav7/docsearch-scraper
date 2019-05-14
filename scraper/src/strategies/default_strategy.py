@@ -7,6 +7,7 @@ from .anchor import Anchor
 from .hierarchy import Hierarchy
 from ..config.urls_parser import UrlsParser
 from ..helpers import to_json
+import urlparse
 
 
 class DefaultStrategy(AbstractStrategy):
@@ -118,6 +119,13 @@ class DefaultStrategy(AbstractStrategy):
                                                              content,
                                                              selectors,
                                                              self.levels)
+            if hasattr(self.config, 'base_index_url'):
+                current_url = urlparse.urlparse(current_page_url)
+                url = self.config.base_index_url + current_url.path
+                url_without_variables = self.config.base_index_url + current_url.path
+            else:
+                url = current_page_url
+                url_without_variables = current_page_url
 
             # noinspection PyDictCreation
             record = {
@@ -136,8 +144,8 @@ class DefaultStrategy(AbstractStrategy):
                     'level': self.get_level_weight(current_level),
                     'position': position
                 },
-                'url': current_page_url,
-                'url_without_variables': current_page_url
+                'url': url,
+                'url_without_variables': url_without_variables
             }
 
             extra_attributes = UrlsParser.get_extra_attributes(
